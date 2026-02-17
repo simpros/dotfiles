@@ -30,7 +30,6 @@ path=(
   "$HOME/.bun/bin"
   "$HOME/Library/pnpm"
   "$HOME/Library/Application Support/fnm"
-  "$HOME/.rd/bin"
   "$HOME/.codeium/windsurf/bin"
   $path
 )
@@ -66,6 +65,9 @@ if [[ -s "$HOME/.bun/_bun" ]]; then
   compinit -C  # -C flag skips security checks for speed
 fi
 
+# zoxide - smarter cd command
+eval "$(zoxide init zsh)"
+
 # ============================================
 # Prompt (choose ONE option below)
 # ============================================
@@ -94,6 +96,9 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # ============================================
 # Aliases & Custom Functions
 # ============================================
+
+# Local machine-only overrides (not tracked in dotfiles)
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # Quick zsh reload
 alias zshreload="source ~/.zshrc"
